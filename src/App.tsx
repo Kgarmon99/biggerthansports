@@ -17,68 +17,68 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-sans">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
-            <div className="flex items-center gap-3">
-              <div className={`relative transition-opacity duration-300 ${scrolled ? 'opacity-0 hidden' : 'opacity-100'}`}>
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center">
+              <div className={`relative transition-all duration-500 ${scrolled ? 'opacity-0 hidden' : 'opacity-100'}`}>
                 <img 
                   src="/biggerthansports/assets/logo-white.jpg" 
                   alt="Bigger Than Sports" 
-                  className="h-16 w-auto object-contain rounded-lg shadow-lg"
+                  className="h-14 w-auto object-contain rounded-lg shadow-2xl"
                 />
               </div>
-              <div className={`relative transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 hidden'}`}>
+              <div className={`relative transition-all duration-500 ${scrolled ? 'opacity-100' : 'opacity-0 hidden'}`}>
                 <img 
                   src="/biggerthansports/assets/logo-black.jpg" 
                   alt="Bigger Than Sports" 
-                  className="h-16 w-auto object-contain rounded-lg shadow-lg"
+                  className="h-14 w-auto object-contain rounded-lg shadow-lg"
                 />
               </div>
             </div>
             
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-1">
               {['Mission', 'Programs', 'Impact', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`font-medium hover:text-red-600 transition ${scrolled ? 'text-gray-700' : 'text-white'}`}
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 ${scrolled ? 'text-gray-700 hover:text-red-600 hover:bg-red-50' : 'text-white/90 hover:text-white hover:bg-white/10'}`}
                 >
                   {item}
                 </button>
               ))}
-              <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full font-semibold transition">
-                Donate
+              <button className="ml-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25">
+                Donate Now
               </button>
             </div>
 
             <button 
-              className="md:hidden p-2"
+              className="md:hidden p-2 rounded-lg hover:bg-white/10 transition"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <div className={`w-6 h-0.5 mb-1.5 transition ${scrolled ? 'bg-gray-800' : 'bg-white'}`}></div>
-              <div className={`w-6 h-0.5 mb-1.5 transition ${scrolled ? 'bg-gray-800' : 'bg-white'}`}></div>
-              <div className={`w-6 h-0.5 transition ${scrolled ? 'bg-gray-800' : 'bg-white'}`}></div>
+              <div className={`w-6 h-0.5 mb-1.5 transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'}`}></div>
+              <div className={`w-6 h-0.5 mb-1.5 transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'}`}></div>
+              <div className={`w-6 h-0.5 transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'}`}></div>
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white shadow-xl">
-            <div className="px-4 py-4 space-y-3">
+          <div className="md:hidden bg-white/95 backdrop-blur-lg shadow-2xl border-t border-gray-100">
+            <div className="px-6 py-6 space-y-2">
               {['Mission', 'Programs', 'Impact', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="block w-full text-left py-2 text-gray-700 font-medium"
+                  className="block w-full text-left py-3 px-4 text-gray-700 font-medium rounded-lg hover:bg-red-50 hover:text-red-600 transition"
                 >
                   {item}
                 </button>
               ))}
-              <button className="w-full bg-red-600 text-white py-3 rounded-full font-semibold">
+              <button className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-full font-semibold mt-4 shadow-lg shadow-red-500/25">
                 Donate Now
               </button>
             </div>
@@ -87,44 +87,58 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-gray-800"></div>
-        <div className="absolute inset-0 bg-[url('/biggerthansports/assets/training.jpg')] bg-cover bg-center opacity-30"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
+        <div className="absolute inset-0 bg-[url('/biggerthansports/assets/training.jpg')] bg-cover bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40"></div>
+        
+        {/* Animated background accent */}
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-red-600/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-white px-4 py-2 rounded-full mb-6">
-              <Star className="w-4 h-4 text-red-500" />
-              <span className="text-sm font-medium">Cincinnati's Premier Athlete Community</span>
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-5 py-2.5 rounded-full mb-8">
+              <Star className="w-4 h-4 text-red-400 fill-red-400" />
+              <span className="text-sm font-medium tracking-wide">Cincinnati's Premier Athlete Community</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Building Community Through <span className="text-red-500">Sports</span>
+            
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight">
+              Building Community{' '}
+              <span className="relative">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">
+                  Through Sports
+                </span>
+                <span className="absolute bottom-2 left-0 w-full h-3 bg-red-500/30 -skew-x-3"></span>
+              </span>
             </h1>
-            <p className="text-xl text-gray-200 mb-8 max-w-2xl">
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
               We connect athletes with the Cincinnati community, creating lasting impact through mentorship, 
               events, and meaningful engagement.
             </p>
+            
             <div className="flex flex-wrap gap-4">
-              <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center gap-2">
+              <button className="group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-red-500/30 flex items-center gap-2">
                 Get Involved
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="bg-white/10 hover:bg-white/20 backdrop-blur text-white px-8 py-4 rounded-full font-bold text-lg transition">
+              <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105">
                 Our Programs
               </button>
             </div>
             
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-white/20">
+            <div className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-white/10">
               {[
                 { number: '2,500+', label: 'Lives Impacted' },
                 { number: '150+', label: 'Athlete Partners' },
                 { number: '40+', label: 'Community Events' },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-red-500">{stat.number}</div>
-                  <div className="text-sm text-gray-300 mt-1">{stat.label}</div>
+                  <div className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">{stat.number}</div>
+                  <div className="text-sm text-gray-400 mt-2 font-medium tracking-wide uppercase">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -133,12 +147,12 @@ function App() {
       </section>
 
       {/* Mission Section */}
-      <section id="mission" className="py-24 bg-gray-50">
+      <section id="mission" className="py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <span className="text-red-600 font-semibold uppercase tracking-wide">Our Mission</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">
+              <span className="inline-block text-red-600 font-bold uppercase tracking-widest text-sm mb-4">Our Mission</span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">
                 More Than Just a Game
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
@@ -146,7 +160,7 @@ function App() {
                 Our mission is to empower individuals and communities through inclusive sports programs, 
                 educational opportunities, and impactful outreach initiatives.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-600 mb-10 leading-relaxed">
                 Through our programs, we bridge the gap between professional athletes and the communities 
                 that support them, fostering relationships that extend far beyond the final whistle.
               </p>
@@ -155,12 +169,12 @@ function App() {
                   { icon: <Users className="w-6 h-6" />, title: 'Community First', desc: 'Putting Cincinnati families first' },
                   { icon: <HandHeart className="w-6 h-6" />, title: 'Giving Back', desc: 'Creating lasting positive impact' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 shrink-0">
+                  <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-red-500/25">
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                      <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
                       <p className="text-sm text-gray-500">{item.desc}</p>
                     </div>
                   </div>
@@ -172,17 +186,17 @@ function App() {
                 <img 
                   src="/biggerthansports/assets/group-arena.jpg" 
                   alt="Bigger Than Sports Community" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl">
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
-                    <Trophy className="w-8 h-8 text-red-600" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-500/25">
+                    <Trophy className="w-7 h-7" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">Est. 2018</div>
-                    <div className="text-gray-500">Serving Cincinnati</div>
+                    <div className="text-2xl font-extrabold text-gray-900">Est. 2018</div>
+                    <div className="text-gray-500 text-sm">Serving Cincinnati</div>
                   </div>
                 </div>
               </div>
@@ -192,11 +206,11 @@ function App() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-24">
+      <section id="programs" className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-red-600 font-semibold uppercase tracking-wide">What We Do</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <span className="inline-block text-red-600 font-bold uppercase tracking-widest text-sm mb-4">What We Do</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
               Our Programs & Events
             </h2>
             <p className="text-lg text-gray-600">
@@ -243,23 +257,23 @@ function App() {
                 date: 'Quarterly'
               },
             ].map((program, i) => (
-              <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div key={i} className="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-red-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="aspect-[16/10] overflow-hidden">
                   <img 
                     src={program.image} 
                     alt={program.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-red-600 text-sm font-medium mb-3">
+                <div className="p-8">
+                  <div className="flex items-center gap-2 text-red-600 text-sm font-bold uppercase tracking-wide mb-3">
                     <Calendar className="w-4 h-4" />
                     {program.date}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{program.title}</h3>
-                  <p className="text-gray-600 mb-4">{program.desc}</p>
-                  <button className="text-red-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Learn More <ArrowRight className="w-4 h-4" />
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">{program.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{program.desc}</p>
+                  <button className="text-red-600 font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>
@@ -269,31 +283,37 @@ function App() {
       </section>
 
       {/* Impact Section */}
-      <section id="impact" className="py-24 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section id="impact" className="py-28 bg-gray-900 text-white relative overflow-hidden">
+        {/* Background accent */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-600/10 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <span className="text-red-500 font-semibold uppercase tracking-wide">Our Impact</span>
-              <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-                Making a Difference in Cincinnati
+              <span className="inline-block text-red-400 font-bold uppercase tracking-widest text-sm mb-4">Our Impact</span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
+                Making a Difference in{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">
+                  Cincinnati
+                </span>
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-400 mb-12 leading-relaxed">
                 Since 2018, we've been dedicated to creating positive change through sports and community engagement.
               </p>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {[
                   { icon: <Users />, stat: '2,500+', label: 'Community Members Served' },
                   { icon: <Heart />, stat: '150+', label: 'Volunteer Athletes' },
                   { icon: <Trophy />, stat: '40+', label: 'Successful Events' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-6">
-                    <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-red-500">
+                  <div key={i} className="flex items-center gap-6 group">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl flex items-center justify-center text-red-400 group-hover:from-red-600 group-hover:to-red-700 group-hover:text-white transition-all duration-300">
                       {item.icon}
                     </div>
                     <div>
-                      <div className="text-3xl font-bold">{item.stat}</div>
-                      <div className="text-gray-400">{item.label}</div>
+                      <div className="text-4xl font-extrabold">{item.stat}</div>
+                      <div className="text-gray-500">{item.label}</div>
                     </div>
                   </div>
                 ))}
@@ -301,62 +321,68 @@ function App() {
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <img src="/biggerthansports/assets/youth-group.jpg" alt="Youth program" className="rounded-2xl w-full h-48 object-cover" />
-              <img src="/biggerthansports/assets/training.jpg" alt="Training session" className="rounded-2xl w-full h-48 object-cover mt-8" />
-              <img src="/biggerthansports/assets/team-trophy.jpg" alt="Championship team" className="rounded-2xl w-full h-48 object-cover" />
-              <img src="/biggerthansports/assets/medals.jpg" alt="Awards ceremony" className="rounded-2xl w-full h-48 object-cover mt-8" />
+              <img src="/biggerthansports/assets/youth-group.jpg" alt="Youth program" className="rounded-2xl w-full h-56 object-cover hover:scale-105 transition-transform duration-500" />
+              <img src="/biggerthansports/assets/training.jpg" alt="Training session" className="rounded-2xl w-full h-56 object-cover mt-12 hover:scale-105 transition-transform duration-500" />
+              <img src="/biggerthansports/assets/team-trophy.jpg" alt="Championship team" className="rounded-2xl w-full h-56 object-cover hover:scale-105 transition-transform duration-500" />
+              <img src="/biggerthansports/assets/medals.jpg" alt="Awards ceremony" className="rounded-2xl w-full h-56 object-cover mt-12 hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Partners/Supporters */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-gray-500 font-medium mb-8">Supported by Cincinnati's Finest</h3>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
+          <h3 className="text-gray-400 font-medium mb-12 tracking-wide uppercase text-sm">Supported by Cincinnati's Finest</h3>
+          <div className="flex flex-wrap justify-center items-center gap-16">
             {['University of Cincinnati', 'Xavier University', 'Tampa Spartans', 'Local Partners'].map((partner, i) => (
-              <div key={i} className="text-xl font-bold text-gray-400">{partner}</div>
+              <div key={i} className="text-2xl font-bold text-gray-300 hover:text-gray-500 transition-colors cursor-default">{partner}</div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Contact/CTA Section */}
-      <section id="contact" className="py-24">
+      <section id="contact" className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-3xl p-8 md:p-16 text-center text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Join the Movement
-            </h2>
-            <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
-              Whether you're an athlete looking to give back or a community member wanting to get involved, 
-              we'd love to hear from you.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-white text-red-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition">
-                Volunteer With Us
-              </button>
-              <button className="bg-red-800 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-red-900 transition">
-                Partner With Us
-              </button>
+          <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 rounded-[2.5rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-2xl"></div>
+            
+            <div className="relative">
+              <h2 className="text-4xl md:text-6xl font-extrabold mb-8">
+                Join the Movement
+              </h2>
+              <p className="text-xl text-red-100 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Whether you're an athlete looking to give back or a community member wanting to get involved, 
+                we'd love to hear from you.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <button className="bg-white text-red-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-xl">
+                  Volunteer With Us
+                </button>
+                <button className="bg-red-900/50 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-900/70 transition-all duration-300 hover:scale-105">
+                  Partner With Us
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Contact Info */}
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid md:grid-cols-3 gap-8 mt-20">
             {[
               { icon: <Mail />, title: 'Email', info: 'tremainedees@biggerthansportsnonprofit.com' },
               { icon: <Phone />, title: 'Phone', info: '(513) 313-1068' },
               { icon: <MapPin />, title: 'Location', info: 'Cincinnati, Ohio' },
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-4 justify-center md:justify-start">
-                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600">
+              <div key={i} className="flex items-center gap-5 justify-center md:justify-start p-6 rounded-2xl bg-gray-50 hover:bg-red-50 transition-colors group">
+                <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-red-500/25 group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500">{item.title}</div>
-                  <div className="font-semibold text-gray-900 text-sm">{item.info}</div>
+                  <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">{item.title}</div>
+                  <div className="font-bold text-gray-900">{item.info}</div>
                 </div>
               </div>
             ))}
@@ -365,54 +391,54 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <img src="/biggerthansports/assets/logo-white.jpg" alt="Bigger Than Sports" className="h-16 w-auto object-contain rounded-lg" />
+              <div className="flex items-center gap-3 mb-8">
+                <img src="/biggerthansports/assets/logo-white.jpg" alt="Bigger Than Sports" className="h-16 w-auto object-contain rounded-lg shadow-xl" />
               </div>
-              <p className="text-gray-400 mb-6 max-w-md">
+              <p className="text-gray-400 mb-8 max-w-md text-lg leading-relaxed">
                 Connecting athletes with the Cincinnati community to create lasting positive impact 
                 through mentorship, events, and engagement.
               </p>
               <div className="flex gap-4">
-                {['IG', 'X', 'FB'].map((label, i) => (
-                  <a key={i} href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition text-sm font-bold">
-                    {label}
+                {['Instagram', 'X', 'Facebook'].map((label, i) => (
+                  <a key={i} href="#" className="w-12 h-12 bg-gray-800 hover:bg-gradient-to-br hover:from-red-600 hover:to-red-700 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <span className="text-xs font-bold">{label.slice(0, 2)}</span>
                   </a>
                 ))}
               </div>
             </div>
             
             <div>
-              <h4 className="font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-3 text-gray-400">
+              <h4 className="font-bold mb-6 text-lg">Quick Links</h4>
+              <ul className="space-y-4 text-gray-400">
                 {['About Us', 'Our Programs', 'Get Involved', 'Donate', 'Contact'].map((link) => (
-                  <li key={link}><a href="#" className="hover:text-white transition">{link}</a></li>
+                  <li key={link}><a href="#" className="hover:text-white hover:translate-x-1 inline-block transition-all">{link}</a></li>
                 ))}
               </ul>
             </div>
             
             <div>
-              <h4 className="font-bold mb-4">Newsletter</h4>
-              <p className="text-gray-400 text-sm mb-4">Stay updated with our latest events and impact stories.</p>
+              <h4 className="font-bold mb-6 text-lg">Newsletter</h4>
+              <p className="text-gray-400 mb-6">Stay updated with our latest events and impact stories.</p>
               <div className="flex gap-2">
                 <input 
                   type="email" 
                   placeholder="Your email" 
-                  className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-red-500"
+                  className="flex-1 bg-gray-800 border border-gray-700 rounded-full px-5 py-3 text-sm focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
                 />
-                <button className="bg-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition">
+                <button className="bg-gradient-to-r from-red-600 to-red-700 px-6 py-3 rounded-full font-bold hover:from-red-700 hover:to-red-800 transition-all hover:scale-105">
                   Join
                 </button>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-wrap justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm">© 2024 Bigger Than Sports Foundation. All rights reserved.</p>
-            <div className="flex gap-6 text-sm text-gray-500">
+          <div className="border-t border-gray-800 mt-16 pt-8 flex flex-wrap justify-between items-center gap-4">
+            <p className="text-gray-500">© 2024 Bigger Than Sports Foundation. All rights reserved.</p>
+            <div className="flex gap-8 text-gray-500">
               <a href="#" className="hover:text-white transition">Privacy Policy</a>
               <a href="#" className="hover:text-white transition">Terms of Service</a>
             </div>
