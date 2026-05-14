@@ -5,6 +5,8 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showDonateModal, setShowDonateModal] = useState(false);
+  const [showVolunteerModal, setShowVolunteerModal] = useState(false);
+  const [showPartnerModal, setShowPartnerModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -366,10 +368,16 @@ function App() {
                 we'd love to hear from you.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <button className="bg-white text-red-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-xl">
+                <button 
+                  onClick={() => setShowVolunteerModal(true)}
+                  className="bg-white text-red-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-xl"
+                >
                   Volunteer With Us
                 </button>
-                <button className="bg-red-900/50 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-900/70 transition-all duration-300 hover:scale-105">
+                <button 
+                  onClick={() => setShowPartnerModal(true)}
+                  className="bg-red-900/50 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-900/70 transition-all duration-300 hover:scale-105"
+                >
                   Partner With Us
                 </button>
               </div>
@@ -498,6 +506,102 @@ function App() {
               <p className="text-sm text-gray-500 text-center">
                 Bigger Than Sports Foundation is a registered 501(c)(3) nonprofit organization. <br/>
                 All donations are tax-deductible.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Volunteer Modal */}
+      {showVolunteerModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+            onClick={() => setShowVolunteerModal(false)}
+          ></div>
+          <div className="relative bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl transform transition-all">
+            <button 
+              onClick={() => setShowVolunteerModal(false)}
+              className="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition"
+            >
+              <X className="w-5 h-5 text-gray-600" />
+            </button>
+            
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-red-500/25">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Become a Volunteer</h3>
+              <p className="text-gray-600">Join our team of dedicated volunteers making a difference in Cincinnati.</p>
+            </div>
+            
+            <div className="space-y-4">
+              <a 
+                href="mailto:tremainedees@biggerthansportsnonprofit.com?subject=Volunteer Application"
+                className="block w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-4 rounded-xl font-bold text-center transition-all hover:scale-[1.02]"
+              >
+                Email Us to Volunteer
+              </a>
+              
+              <a 
+                href="tel:5133131068"
+                className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-4 rounded-xl font-bold text-center transition-all"
+              >
+                Call (513) 313-1068
+              </a>
+            </div>
+            
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-sm text-gray-500 text-center">
+                We're always looking for passionate individuals to help with events, mentorship, and community outreach.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Partner Modal */}
+      {showPartnerModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+            onClick={() => setShowPartnerModal(false)}
+          ></div>
+          <div className="relative bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl transform transition-all">
+            <button 
+              onClick={() => setShowPartnerModal(false)}
+              className="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition"
+            >
+              <X className="w-5 h-5 text-gray-600" />
+            </button>
+            
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-red-500/25">
+                <HandHeart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Partner With Us</h3>
+              <p className="text-gray-600">Collaborate with Bigger Than Sports to create meaningful community impact.</p>
+            </div>
+            
+            <div className="space-y-4">
+              <a 
+                href="mailto:tremainedees@biggerthansportsnonprofit.com?subject=Partnership Inquiry"
+                className="block w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-4 rounded-xl font-bold text-center transition-all hover:scale-[1.02]"
+              >
+                Email About Partnership
+              </a>
+              
+              <a 
+                href="tel:5133131068"
+                className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-4 rounded-xl font-bold text-center transition-all"
+              >
+                Call (513) 313-1068
+              </a>
+            </div>
+            
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-sm text-gray-500 text-center">
+                We partner with businesses, schools, and organizations to expand our reach and impact.
               </p>
             </div>
           </div>
