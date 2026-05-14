@@ -129,11 +129,17 @@ function App() {
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <button className="group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-red-500/30 flex items-center gap-2">
+              <button 
+                onClick={() => setShowVolunteerModal(true)}
+                className="group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-red-500/30 flex items-center gap-2"
+              >
                 Get Involved
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105">
+              <button 
+                onClick={() => scrollToSection('programs')}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105"
+              >
                 Our Programs
               </button>
             </div>
