@@ -419,3 +419,4 @@ function App() {
 }
 
 export default App;// Deploy trigger
+// Redeploy after GitHub Actions config
