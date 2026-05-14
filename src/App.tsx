@@ -21,17 +21,17 @@ function App() {
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
             <div className="flex items-center gap-3">
               <img 
                 src="/biggerthansports/assets/logo-white.jpg" 
                 alt="Bigger Than Sports" 
-                className={`h-12 w-auto transition-opacity duration-300 ${scrolled ? 'opacity-0 hidden' : 'opacity-100'}`}
+                className={`h-20 w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-0 hidden' : 'opacity-100'}`}
               />
               <img 
                 src="/biggerthansports/assets/logo-black.jpg" 
                 alt="Bigger Than Sports" 
-                className={`h-12 w-auto transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 hidden'}`}
+                className={`h-20 w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 hidden'}`}
               />
             </div>
             
@@ -366,7 +366,7 @@ function App() {
           <div className="grid md:grid-cols-4 gap-12">
             <div className="col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <img src="/biggerthansports/assets/logo-white.jpg" alt="Bigger Than Sports" className="h-12 w-auto" />
+                <img src="/biggerthansports/assets/logo-white.jpg" alt="Bigger Than Sports" className="h-20 w-auto object-contain" />
               </div>
               <p className="text-gray-400 mb-6 max-w-md">
                 Connecting athletes with the Cincinnati community to create lasting positive impact 
