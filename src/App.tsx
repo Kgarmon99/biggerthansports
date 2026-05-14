@@ -23,16 +23,20 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
             <div className="flex items-center gap-3">
-              <img 
-                src="/biggerthansports/assets/logo-white.jpg" 
-                alt="Bigger Than Sports" 
-                className={`h-20 w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-0 hidden' : 'opacity-100'}`}
-              />
-              <img 
-                src="/biggerthansports/assets/logo-black.jpg" 
-                alt="Bigger Than Sports" 
-                className={`h-20 w-auto object-contain transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 hidden'}`}
-              />
+              <div className={`relative transition-opacity duration-300 ${scrolled ? 'opacity-0 hidden' : 'opacity-100'}`}>
+                <img 
+                  src="/biggerthansports/assets/logo-white.jpg" 
+                  alt="Bigger Than Sports" 
+                  className="h-16 w-auto object-contain rounded-lg shadow-lg"
+                />
+              </div>
+              <div className={`relative transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 hidden'}`}>
+                <img 
+                  src="/biggerthansports/assets/logo-black.jpg" 
+                  alt="Bigger Than Sports" 
+                  className="h-16 w-auto object-contain rounded-lg shadow-lg"
+                />
+              </div>
             </div>
             
             <div className="hidden md:flex items-center gap-8">
@@ -366,7 +370,7 @@ function App() {
           <div className="grid md:grid-cols-4 gap-12">
             <div className="col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <img src="/biggerthansports/assets/logo-white.jpg" alt="Bigger Than Sports" className="h-20 w-auto object-contain" />
+                <img src="/biggerthansports/assets/logo-white.jpg" alt="Bigger Than Sports" className="h-16 w-auto object-contain rounded-lg" />
               </div>
               <p className="text-gray-400 mb-6 max-w-md">
                 Connecting athletes with the Cincinnati community to create lasting positive impact 
