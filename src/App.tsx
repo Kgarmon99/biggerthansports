@@ -287,9 +287,12 @@ function App() {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">{program.title}</h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">{program.desc}</p>
-                  <button className="text-red-600 font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
+                  <a 
+                    href={`mailto:tremainedees@biggerthansportsnonprofit.com?subject=Inquiry about ${encodeURIComponent(program.title)}`}
+                    className="text-red-600 font-bold flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer"
+                  >
                     Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
