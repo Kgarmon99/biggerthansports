@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Heart, Users, Calendar, MapPin, Mail, Phone, ArrowRight, Star, Trophy, HandHeart } from 'lucide-react';
+import { Heart, Users, Calendar, MapPin, Mail, Phone, ArrowRight, Star, Trophy, HandHeart, X } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showDonateModal, setShowDonateModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -49,7 +50,10 @@ function App() {
                   {item}
                 </button>
               ))}
-              <button className="ml-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25">
+              <button 
+                onClick={() => setShowDonateModal(true)}
+                className="ml-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
+              >
                 Donate Now
               </button>
             </div>
@@ -78,7 +82,10 @@ function App() {
                   {item}
                 </button>
               ))}
-              <button className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-full font-semibold mt-4 shadow-lg shadow-red-500/25">
+              <button 
+                onClick={() => { setShowDonateModal(true); setIsMenuOpen(false); }}
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-full font-semibold mt-4 shadow-lg shadow-red-500/25"
+              >
                 Donate Now
               </button>
             </div>
@@ -445,6 +452,57 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Donate Modal */}
+      {showDonateModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+            onClick={() => setShowDonateModal(false)}
+          ></div>
+          <div className="relative bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl transform transition-all">
+            <button 
+              onClick={() => setShowDonateModal(false)}
+              className="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition"
+            >
+              <X className="w-5 h-5 text-gray-600" />
+            </button>
+            
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-red-500/25">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Support Our Mission</h3>
+              <p className="text-gray-600">Your donation helps us continue serving the Cincinnati community.</p>
+            </div>
+            
+            <div className="space-y-4">
+              <a 
+                href="https://www.paypal.com/donate?business=tremainedees@biggerthansportsnonprofit.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 rounded-xl font-bold text-center transition-all hover:scale-[1.02]"
+              >
+                Donate with PayPal
+              </a>
+              
+              <a 
+                href="mailto:tremainedees@biggerthansportsnonprofit.com?subject=Donation Inquiry"
+                className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-4 rounded-xl font-bold text-center transition-all"
+              >
+                Contact Us About Donating
+              </a>
+            </div>
+            
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-sm text-gray-500 text-center">
+                Bigger Than Sports Foundation is a registered 501(c)(3) nonprofit organization. <br/>
+                All donations are tax-deductible.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
