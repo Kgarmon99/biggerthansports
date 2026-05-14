@@ -8,6 +8,7 @@ function App() {
   const [showVolunteerModal, setShowVolunteerModal] = useState(false);
   const [showPartnerModal, setShowPartnerModal] = useState(false);
   const [showThanksgivingModal, setShowThanksgivingModal] = useState(false);
+  const [showKicksModal, setShowKicksModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -237,6 +238,12 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               {
+                title: 'Kicks & Autographs',
+                desc: 'Sneaker giveaway and autograph event featuring UC basketball star Dee Alexander.',
+                image: '/biggerthansports/assets/kicks-flyer.jpg',
+                date: 'Special Event'
+              },
+              {
                 title: 'Hometown Heroes Thanksgiving',
                 desc: 'Annual Thanksgiving meal giveaway serving hundreds of Cincinnati families.',
                 image: '/biggerthansports/assets/thanksgiving-drive.jpg',
@@ -291,6 +298,13 @@ function App() {
                   {program.title === 'Hometown Heroes Thanksgiving' ? (
                     <button 
                       onClick={() => setShowThanksgivingModal(true)}
+                      className="text-red-600 font-bold flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer"
+                    >
+                      View Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  ) : program.title === 'Kicks & Autographs' ? (
+                    <button 
+                      onClick={() => setShowKicksModal(true)}
                       className="text-red-600 font-bold flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer"
                     >
                       View Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -691,6 +705,78 @@ function App() {
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-red-500/25"
                 >
                   Get Involved Next Year <ArrowRight className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Kicks & Autographs Gallery Modal */}
+      {showKicksModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
+            onClick={() => setShowKicksModal(false)}
+          ></div>
+          <div className="relative bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all">
+            <button 
+              onClick={() => setShowKicksModal(false)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition shadow-lg"
+            >
+              <X className="w-5 h-5 text-gray-800" />
+            </button>
+            
+            <div className="p-8 md:p-12">
+              <div className="text-center mb-10">
+                <span className="inline-block text-red-600 font-bold uppercase tracking-widest text-sm mb-4">Special Event</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                  Kicks & Autographs
+                </h3>
+                <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                  A sneaker giveaway and autograph event featuring UC basketball star Dee Alexander. 
+                  Youth received free sneakers and got them signed by local athletes.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <img 
+                    src="/biggerthansports/assets/kicks-1.jpg" 
+                    alt="Kids receiving new sneakers"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <img 
+                    src="/biggerthansports/assets/kicks-2.jpg" 
+                    alt="Athlete signing sneakers"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  <img 
+                    src="/biggerthansports/assets/kicks-3.jpg" 
+                    alt="Group photo with their new kicks"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+              
+              <div className="mt-8 text-center">
+                <img 
+                  src="/biggerthansports/assets/kicks-flyer.jpg" 
+                  alt="Kicks & Autographs Event Flyer"
+                  className="max-w-md mx-auto rounded-2xl shadow-xl"
+                />
+              </div>
+              
+              <div className="mt-10 text-center">
+                <a 
+                  href="mailto:tremainedees@biggerthansportsnonprofit.com?subject=Kicks & Autographs Event Inquiry"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-red-500/25"
+                >
+                  Host This Event <ArrowRight className="w-5 h-5" />
                 </a>
               </div>
             </div>
