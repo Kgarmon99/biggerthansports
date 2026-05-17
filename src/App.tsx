@@ -9,6 +9,17 @@ function App() {
   const [showPartnerModal, setShowPartnerModal] = useState(false);
   const [showThanksgivingModal, setShowThanksgivingModal] = useState(false);
   const [showKicksModal, setShowKicksModal] = useState(false);
+  const [email, setEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'success'>('idle');
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setNewsletterStatus('success');
+      setEmail('');
+      setTimeout(() => setNewsletterStatus('idle'), 3000);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -17,7 +28,15 @@ function App() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const sectionMap: Record<string, string> = {
+      'about-us': 'mission',
+      'our-programs': 'programs',
+      'get-involved': 'contact',
+      'donate': 'contact',
+      'contact': 'contact'
+    };
+    const targetId = sectionMap[id] || id;
+    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
@@ -451,9 +470,13 @@ function App() {
                 through mentorship, events, and engagement.
               </p>
               <div className="flex gap-4">
-                {['Instagram', 'X', 'Facebook'].map((label, i) => (
-                  <a key={i} href="#" className="w-10 h-10 md:w-12 md:h-12 bg-gray-800 hover:bg-gradient-to-br hover:from-red-600 hover:to-red-700 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
-                    <span className="text-xs font-bold">{label.slice(0, 2)}</span>
+                {[
+                  { label: 'IG', href: 'https://instagram.com/biggerthansportsfoundation' },
+                  { label: 'X', href: 'https://x.com/biggerthansports' },
+                  { label: 'FB', href: 'https://facebook.com/biggerthansportsfoundation' },
+                ].map((social, i) => (
+                  <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 bg-gray-800 hover:bg-gradient-to-br hover:from-red-600 hover:to-red-700 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <span className="text-xs font-bold">{social.label}</span>
                   </a>
                 ))}
               </div>
@@ -463,7 +486,7 @@ function App() {
               <h4 className="font-bold mb-4 md:mb-6 text-lg">Quick Links</h4>
               <ul className="space-y-3 md:space-y-4 text-gray-400">
                 {['About Us', 'Our Programs', 'Get Involved', 'Donate', 'Contact'].map((link) => (
-                  <li key={link}><a href="#" className="hover:text-white hover:translate-x-1 inline-block transition-all">{link}</a></li>
+                  <li key={link}><button key={link} onClick={() => scrollToSection(link.toLowerCase().replace(' ', '-'))} className="hover:text-white hover:translate-x-1 inline-block transition-all text-left">{link}</button></li>
                 ))}
               </ul>
             </div>
@@ -471,21 +494,30 @@ function App() {
             <div>
               <h4 className="font-bold mb-4 md:mb-6 text-lg">Newsletter</h4>
               <p className="text-gray-400 mb-4 md:mb-6 text-sm md:text-base">Stay updated with our latest events and impact stories.</p>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="flex-1 bg-gray-800 border border-gray-700 rounded-full px-4 md:px-5 py-3 text-sm focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
-                />
-                <button className="bg-gradient-to-r from-red-600 to-red-700 px-6 py-3 rounded-full font-bold hover:from-red-700 hover:to-red-800 transition-all hover:scale-105 whitespace-nowrap">
-                  Join
-                </button>
-              </div>
+              {newsletterStatus === 'success' ? (
+                <div className="bg-green-500/20 border border-green-500/30 rounded-full px-4 py-3 text-green-400 text-sm font-medium text-center">
+                  Thanks for subscribing!
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2">
+                  <input 
+                    type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your email" 
+                    required
+                    className="flex-1 bg-gray-800 border border-gray-700 rounded-full px-4 md:px-5 py-3 text-sm focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
+                  />
+                  <button type="submit" className="bg-gradient-to-r from-red-600 to-red-700 px-6 py-3 rounded-full font-bold hover:from-red-700 hover:to-red-800 transition-all hover:scale-105 whitespace-nowrap">
+                    Join
+                  </button>
+                </form>
+              )}
             </div>
           </div>
           
           <div className="border-t border-gray-800 mt-12 md:mt-16 pt-6 md:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm md:text-base text-center sm:text-left">© 2024 Bigger Than Sports Foundation. All rights reserved.</p>
+            <p className="text-gray-500 text-sm md:text-base text-center sm:text-left">© {new Date().getFullYear()} Bigger Than Sports Foundation. All rights reserved.</p>
             <div className="flex gap-6 md:gap-8 text-gray-500 text-sm md:text-base">
               <a href="#" className="hover:text-white transition">Privacy Policy</a>
               <a href="#" className="hover:text-white transition">Terms of Service</a>
