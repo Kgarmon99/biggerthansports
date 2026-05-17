@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Heart, Users, Calendar, MapPin, Mail, Phone, ArrowRight, Star, Trophy, HandHeart, X } from 'lucide-react';
+import { Heart, Users, Calendar, MapPin, Mail, Phone, ArrowRight, Star, Trophy, HandHeart, X, Clock } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,7 +64,7 @@ function App() {
             </div>
             
             <div className="hidden md:flex items-center gap-1">
-              {['Mission', 'Programs', 'Impact', 'Contact'].map((item) => (
+              {['Mission', 'Events', 'Programs', 'Impact', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -96,7 +96,7 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden bg-white/95 backdrop-blur-lg shadow-2xl border-t border-gray-100">
             <div className="px-6 py-6 space-y-2">
-              {['Mission', 'Programs', 'Impact', 'Contact'].map((item) => (
+              {['Mission', 'Events', 'Programs', 'Impact', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -237,6 +237,102 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events Section */}
+      <section id="events" className="py-16 md:py-28 bg-gradient-to-br from-red-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+            <span className="inline-block text-red-600 font-bold uppercase tracking-widest text-sm mb-4">Mark Your Calendar</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6">
+              Upcoming Events
+            </h2>
+            <p className="text-base md:text-lg text-gray-600 px-4">
+              Join us at our upcoming events and be part of the movement.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                title: 'Summer Basketball Camp',
+                desc: 'Free basketball clinic for youth ages 8-14. Learn skills, teamwork, and sportsmanship from local athletes.',
+                date: 'June 28, 2025',
+                time: '9:00 AM - 3:00 PM',
+                location: 'Cincinnati Recreation Center',
+                image: '/biggerthansports/assets/team-trophy.jpg',
+                status: 'Registration Open'
+              },
+              {
+                title: 'Back to School Supply Drive',
+                desc: 'Help us provide backpacks and school supplies to 500+ Cincinnati students. Drop off donations or volunteer.',
+                date: 'August 9, 2025',
+                time: '10:00 AM - 4:00 PM',
+                location: 'Washington Park',
+                image: '/biggerthansports/assets/ms-basketball.jpg',
+                status: 'Volunteers Needed'
+              },
+              {
+                title: 'Community Fitness Day',
+                desc: 'A day of free fitness activities, health screenings, and wellness workshops for the entire family.',
+                date: 'September 20, 2025',
+                time: '8:00 AM - 2:00 PM',
+                location: 'Sawyer Point Park',
+                image: '/biggerthansports/assets/training.jpg',
+                status: 'Save the Date'
+              },
+            ].map((event, i) => (
+              <div key={i} className="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-red-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col">
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img 
+                    src={event.image} 
+                    alt={event.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                    {event.status}
+                  </div>
+                </div>
+                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-2 text-red-600 text-sm font-bold uppercase tracking-wide mb-3">
+                    <Calendar className="w-4 h-4" />
+                    {event.date}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">{event.title}</h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed flex-grow">{event.desc}</p>
+                  
+                  <div className="space-y-2 mb-6 text-sm text-gray-500">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-red-500" />
+                      {event.time}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-red-500" />
+                      {event.location}
+                    </div>
+                  </div>
+                  
+                  <a 
+                    href={`mailto:tremainedees@biggerthansportsnonprofit.com?subject=Registration: ${encodeURIComponent(event.title)}`}
+                    className="block w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-3 rounded-xl font-bold text-center transition-all hover:scale-[1.02]"
+                  >
+                    Register / Learn More
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <p className="text-gray-500 mb-4">Want to host an event with us?</p>
+            <a 
+              href="mailto:tremainedees@biggerthansportsnonprofit.com?subject=Event Partnership Inquiry"
+              className="inline-flex items-center gap-2 text-red-600 font-bold hover:gap-3 transition-all"
+            >
+              Contact Us About Events <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
