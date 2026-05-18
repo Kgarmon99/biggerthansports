@@ -536,7 +536,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-12 md:mt-20">
             {[
               { icon: <Mail />, title: 'Email', info: 'tremainedees@biggerthansportsnonprofit.com' },
-              { icon: <Phone />, title: 'Phone', info: '(513) 313-1068' },
+              { icon: <Phone />, title: 'Phone', info: '(513) 525-7412' },
               { icon: <MapPin />, title: 'Location', info: 'Cincinnati, Ohio' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 md:gap-5 justify-start p-4 md:p-6 rounded-2xl bg-gray-50 hover:bg-red-50 transition-colors group">
@@ -705,10 +705,10 @@ function App() {
               </a>
               
               <a 
-                href="tel:5133131068"
+                href="tel:5135257412"
                 className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-4 rounded-xl font-bold text-center transition-all"
               >
-                Call (513) 313-1068
+                Call (513) 525-7412
               </a>
             </div>
             
@@ -753,10 +753,10 @@ function App() {
               </a>
               
               <a 
-                href="tel:5133131068"
+                href="tel:5135257412"
                 className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-4 rounded-xl font-bold text-center transition-all"
               >
-                Call (513) 313-1068
+                Call (513) 525-7412
               </a>
             </div>
             
